@@ -1,2 +1,15 @@
-# dasheng
-个人项目，放各种乱七八糟的
+# umi project
+
+## Getting Started
+
+Install dependencies,
+
+```bash
+$ yarn
+```
+
+Start the dev server,
+
+```bash
+$ yarn start
+```
