@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'antd';
 
 class CounterClass extends Component<any, any> {
   constructor(props: any) {
@@ -11,20 +12,22 @@ class CounterClass extends Component<any, any> {
     return (
       <div>
         <p>你点击了{this.state.count}次</p>
-        <button
+        <Button
+          style={{ marginLeft: '10px' }}
           onClick={() => {
             this.setState({ count: this.state.count + 1 });
           }}
         >
           点击+1
-        </button>
-        <button
+        </Button>
+        <Button
+          style={{ marginLeft: '10px' }}
           onClick={() => {
             this.setState({ count: this.state.count - 1 });
           }}
         >
           点击-1
-        </button>
+        </Button>
       </div>
     );
   }

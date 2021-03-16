@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Button } from 'antd';
 
 export default function Stopwatch() {
   const [isON, setIsOn] = useState(false);
@@ -18,17 +19,23 @@ export default function Stopwatch() {
   return (
     <div>
       <div>{timer}</div>
-      {!isON && <button onClick={() => setIsOn(true)}>开始</button>}
+      {!isON && (
+        <Button style={{ marginLeft: '10px' }} onClick={() => setIsOn(true)}>
+          开始
+        </Button>
+      )}
       {isON && (
-        <button
+        <Button
+          style={{ marginLeft: '10px' }}
           onClick={() => {
             setIsOn(false);
           }}
         >
           关闭
-        </button>
+        </Button>
       )}
-      <button
+      <Button
+        style={{ marginLeft: '10px' }}
         disabled={timer <= 0}
         onClick={() => {
           setIsOn(false);
@@ -36,7 +43,7 @@ export default function Stopwatch() {
         }}
       >
         重置
-      </button>
+      </Button>
     </div>
   );
 }

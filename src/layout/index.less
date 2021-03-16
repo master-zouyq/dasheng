@@ -1,0 +1,51 @@
+.root {
+  background: #f3f3f3;
+  height: 100%;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 10px;
+    background: #d8f3ed;
+    .menu {
+      background: #d8f3ed;
+    }
+    .info-container {
+      .logo-info {
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+      }
+      .user-name {
+        margin-left: 10px;
+      }
+    }
+  }
+  .content {
+    margin: 0px 100px;
+    background: #fff;
+    height: 80%;
+  }
+  .foot {
+    text-align: center;
+    .font-style {
+      font-size: 35px;
+      margin: 0px 10px;
+    }
+  }
+  :global {
+    .ant-menu-vertical {
+      height: 100%;
+    }
+  }
+}
+:global {
+  html,
+  body {
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    #root {
+      height: 100%;
+    }
+  }
+}
