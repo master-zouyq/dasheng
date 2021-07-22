@@ -1,23 +1,52 @@
-//这里是自己在学习过程中自己总结或者摘录他人的文章
-//也是首页
+//react markdown preview
 import React from 'react';
-import CounterClass from './components/hooks/CounterClass';
-import CounterFunc from './components/hooks/CounterFunc';
-import CanRomoveList from './components/hooks/CanRemoveList';
-import Stopwatch from './components/hooks/Stopwatch';
+import CodePreivew from '@uiw/react-code-preview';
+import ReactMarkdown from 'react-markdown';
+import { message, Button } from 'antd';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import gfm from 'remark-gfm';
+import { Tween } from 'react-gsap';
+import styles from './index.less';
 
+const dependencise = {
+  useState: React.useState,
+  useEffect: React.useEffect,
+  useLayoutEffect: React.useLayoutEffect,
+  useMemo: React.useMemo,
+  useCallback: React.useCallback,
+  useImperativeHandle: React.useImperativeHandle,
+  memo: React.memo,
+  useRef: React.useRef,
+  useReducer: React.useReducer,
+  useContext: React.useContext,
+  message,
+  Button,
+};
 export default () => {
+  const content = require('./index.md');
   return (
-    <div style={{ padding: '10px' }}>
-      <h1>React Hooks</h1>
-      <p>class 组件。使用state管理状态</p>
-      <CounterClass />
-      <p>函数 组件。使用useState创建并管理状态</p>
-      <CounterFunc />
-      <p>函数 组件。动态删除list useState</p>
-      <CanRomoveList />
-      <p>下面实现一个秒表，使用到了useEffect</p>
-      <Stopwatch />
+    <div className={styles.wrapper}>
+      <ReactMarkdown
+        components={{
+          code({ node, inline, className, children, ...props }) {
+            return (
+              <>
+                <SyntaxHighlighter language="tsx" children={String(children)} />
+                {className !== 'lalanguage-ignorenge' && (
+                  <CodePreivew
+                    dependencies={dependencise}
+                    code={`${String(children)}\n 
+                    ReactDOM.render(<Component/>,_mount_);`}
+                  />
+                )}
+              </>
+            );
+          },
+        }}
+        remarkPlugins={[gfm]}
+      >
+        {content.default}
+      </ReactMarkdown>
     </div>
   );
 };

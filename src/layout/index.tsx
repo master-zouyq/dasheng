@@ -32,7 +32,6 @@ const BasicLayout: React.FC<RouteComponentProps> = props => {
       <Footer className={styles.foot}>
         <Iconfont type="iconqq" className={styles['font-style']} />
         <Iconfont type="iconwe-chat" className={styles['font-style']} />
-        <div>@copyRight</div>
       </Footer>
     </Layout>
   );
